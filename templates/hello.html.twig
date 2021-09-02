@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Hello
+	{{ prenom }}
+
+{% endblock %}
+
+{% block body %}
+	<h1>Hello
+		{{ prenom|capitalize}}
+	</h1>
+
+	<h2>Nos formateurs :</h2>
+	{% include "_formateur.html.twig" with {"formateur": formateur1} %}
+	{% include "_formateur.html.twig" with {"formateur": formateur2} %}
+{% endblock %}
