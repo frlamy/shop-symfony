@@ -4,13 +4,14 @@
 	Modification du produit n°{{ product.id }}
 {% endblock %}
 
+{% form_theme formView 'shared/_formErrors.html.twig' %}
+
 {% block body %}
+
 	<h1>Editer :
 		{{ product.name }}</h1>
-	{{ form_start(formView)}}
-
+	{{ form_start(formView, {'attr': {'novalidate': 'novalidate'}})}}
 	{{ form_errors(formView)}}
-
 	<div class="row">
 		<div class="col">
 			{{ form_row(formView.name)}}

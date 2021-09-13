@@ -4,39 +4,32 @@ namespace App\Form;
 
 use App\Entity\Product;
 use App\Entity\Category;
-use App\Form\Type\PriceType;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
-use App\Form\DataTransformer\CentimesTransformer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class ProductType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add(
-            'name',
-            TextType::class,
-            [
-                'label' => 'Nom du produit',
-                'attr' => [
-                    'placeholder' => 'Veuillez renseigner le nom du produit'
-                ]
-            ]
-        )
+        $builder->add('name', TextType::class, [
+            'label' => 'Nom du produit',
+            'required' => false,
+            'attr' => ['placeholder' => 'Veuillez renseigner le nom du produit']
+            // 'constraints' => new Assert\NotBlank(['message' => "Validation du formulaire : le nom du produit ne peut pas être vide"])
+        ])
             ->add(
                 'shortDescription',
                 TextareaType::class,
                 [
                     'label' => 'Description du produit',
+                    'required' => false,
                     'attr' => [
                         'placeholder' => 'Tapez une description parlante du produit'
                     ]
@@ -47,9 +40,9 @@ class ProductType extends AbstractType
                 MoneyType::class,
                 [
                     'label' => 'Prix du produit',
-                    'attr' => [
-                        'placeholder' => 'Renseignez le prix du produit'
-                    ],
+                    'required' => false,
+                    'divisor' => 100,
+                    'attr' => ['placeholder' => 'Renseignez le prix du produit'],
                 ]
             )
             ->add(
@@ -57,6 +50,7 @@ class ProductType extends AbstractType
                 UrlType::class,
                 [
                     'label' => 'Image du produit',
+                    'required' => false,
                     'attr' => [
                         'placeholder' => 'Image du produit'
                     ]
@@ -67,6 +61,7 @@ class ProductType extends AbstractType
                 EntityType::class,
                 [
                     'label' => 'Catégories',
+                    'required' => false,
                     'placeholder' => '-- Choisir une catégorie--',
                     'class' => Category::class,
                     'choice_label' => function (Category $category) {

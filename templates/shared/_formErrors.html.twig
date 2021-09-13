@@ -1,0 +1,10 @@
+{% block form_errors %}
+	<span class="invalid-feedback d-block">
+		{% for error in errors %}
+			<span class="d-block">
+				<span class="form-error-icon badge bg-danger text-uppercase">Erreur</span>
+				<span class="form-error-message">{{ error.message }}</span>
+			</span>
+		{% endfor %}
+	</span>
+{% endblock %}
