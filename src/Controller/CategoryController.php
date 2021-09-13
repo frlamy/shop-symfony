@@ -42,7 +42,7 @@ class CategoryController extends AbstractController
 
             return $this->redirectToRoute("homepage");
         }
-
+        
         $formView = $form->createView();
 
         return $this->render("category/create.html.twig", [
