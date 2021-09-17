@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/{slug}", name="product_category")
+     * @Route("/{slug}", name="product_category", priority=-1)
      */
     public function category($slug, CategoryRepository $categoryRepository): Response
     {
@@ -60,7 +60,6 @@ class ProductController extends AbstractController
         $product = new Product;
 
         $form = $this->createForm(ProductType::class, $product);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -76,7 +75,6 @@ class ProductController extends AbstractController
         }
 
         $formView = $form->createView();
-
         return $this->render(
             'product/create.html.twig',
             ['formView' => $formView]
