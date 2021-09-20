@@ -107,9 +107,9 @@ class CartService
      * Récupère le panier en session
      * @return array 
      */
-    protected function getCart(): array
+    protected function getCart(): ?array
     {
-        return $this->session->get('cart');
+        return $this->session->get('cart', []);
     }
 
     /**
