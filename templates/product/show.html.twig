@@ -20,12 +20,12 @@
 		€)</h1>
 	<div class="row">
 		<div class="col-4">
-			<img class="img-fluid" src="{{product.mainPicture}}" alt="Product {{product.name}}">
+			<img class="img-fluid" src="{{product.mainPicture}}" alt="Product {{product.name}}" loading="lazy">
 		</div>
 		<div class="col">
 			<span class="badge rounded-pill bg-light mb-2">{{product.category.name}}</span>
 			<p>{{ product.shortDescription }}</p>
-			<a href="" class="btn btn-success">
+			<a href="{{ path('cart_add', {'id': product.id})}}" class="btn btn-success">
 				<i class="fas fa-shopping-cart"></i>
 				Ajouter au panier
 			</a>
