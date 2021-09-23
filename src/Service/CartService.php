@@ -84,7 +84,7 @@ class CartService
     /**
      * getDetailedCartItems : Renvoie le détail des items du panier
      *
-     * @return array
+     * @return CartItem[]
      */
     public function getDetailedCartItems(): array
     {
@@ -120,5 +120,15 @@ class CartService
     protected function saveCart(array $cart)
     {
         $this->session->set('cart', $cart);
+    }
+
+    /**
+     * Vide le panier après une commande
+     *
+     * @return void
+     */
+    public function empty()
+    {
+        $this->saveCart([]);
     }
 }
