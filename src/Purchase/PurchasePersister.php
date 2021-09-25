@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Purchase;
+
 use App\Entity\Purchase;
 use App\Entity\PurchaseItem;
 use App\Service\CartService;

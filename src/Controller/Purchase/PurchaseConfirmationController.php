@@ -2,18 +2,15 @@
 
 namespace App\Controller\Purchase;
 
-use DateTime;
 use App\Entity\Purchase;
-use App\Entity\PurchaseItem;
 use App\Service\CartService;
 use App\Form\CartConfirmationType;
+use App\Purchase\PurchasePersister;
 use Doctrine\ORM\EntityManagerInterface;
-use PurchasePersister;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 
 class PurchaseConfirmationController extends AbstractController
 {
@@ -55,14 +52,11 @@ class PurchaseConfirmationController extends AbstractController
         }
 
         //5. Créer la purchase
+        /** @var Purchase */
         $purchase = $form->getData();
 
         $this->persister->storePurchase($purchase);
 
-        $this->cartService->empty();
-
-        $this->addflash('success', 'La commande a bien été enregistrée');
-
-        return $this->redirectToRoute("purchase_index");
+        return $this->redirectToRoute("purchase_payment_form", ["id" => $purchase->getId()]);
     }
 }

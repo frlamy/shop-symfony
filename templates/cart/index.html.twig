@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CartController!
+{% block title %}
+	Votre Panier
 {% endblock %}
 
 {% block body %}
@@ -57,7 +58,7 @@
 
 			{{ form_end(confirmationForm) }}
 		{% else %}
-			<h2>Vous devez être connecté pour confirmer cette commande</h2>
+			<h4>Vous devez être connecté pour confirmer cette commande</h4>
 			<a href="{{path("security_login")}}" class=" btn btn-success btn-sm">Connexion</a>
 			ou
 			<a href="#">Créer un compte</a>
