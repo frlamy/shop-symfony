@@ -27,7 +27,6 @@ class PurchasePersister
         //5. Créer une Purchase, la lier avec l'utilisateur connecté -> Security
         /** @var Purchase */
         $purchase->setUser($this->security->getUser())
-            ->setPurchasedAt(new DateTime())
             ->setTotal($this->cartService->getTotal());
 
         $this->em->persist($purchase);
