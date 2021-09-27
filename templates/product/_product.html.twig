@@ -1,11 +1,10 @@
-<div class="col">
+<div class="col mb-2">
 	<div class="card">
 		<img src="{{ p.mainPicture }}" class="img-fluid" alt="Image du produit" loading="lazy">
 		<div class="card-body">
-			<h3 class="card-title">{{ p.name }}({{ p.price / 100 }}
-				&euro;)</h3>
-			<span class="badge bg-info">{{p.category.name}}</span>
-			<p class="card-text">{{ p.shortDescription }}</p>
+			<h4 class="card-title">{{ p.name }}({{ p.price | amount }})</h4>
+			<span class="badge bg-light">{{p.category.name}}</span>
+			<p class="card-text">{{ p.shortDescription | u.truncate(80, '...', false) }}</p>
 			<a href="{{ path("product_show", { 'slug': p.slug, 'category_slug': p.category.slug })}}" class="btn btn-sm btn-primary">Détails</a>
 			<a href="{{ path("cart_add", {'id': p.id})}}" class="btn btn-sm btn-success">Ajouter au panier</a>
 		</div>
