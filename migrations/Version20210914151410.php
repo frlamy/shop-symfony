@@ -22,10 +22,10 @@ final class Version20210914151410 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE `user` (
             `id` int(11) NOT NULL AUTO_INCREMENT,
-            `email` varchar(180) COLLATE utf8mb4 NOT NULL,
+            `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
             `roles` json NOT NULL,
-            `password` varchar(255) COLLATE utf8mb4 NOT NULL,
-            `full_name` varchar(255) COLLATE utf8mb4 NOT NULL,
+            `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+            `full_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
             PRIMARY KEY (`id`),
             UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
            ) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci');
