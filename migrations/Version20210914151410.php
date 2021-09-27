@@ -31,9 +31,9 @@ final class Version20210914151410 extends AbstractMigration
             `email` varchar(180) COLLATE utf8mb4 NOT NULL,
             `roles` json NOT NULL,
             `password` varchar(255) COLLATE utf8mb4 NOT NULL,
+            `full_name` varchar(255) COLLATE utf8mb4 NOT NULL,
             PRIMARY KEY (`id`),
             UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
            ) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci');
-        $this->addSql('ALTER TABLE user CHANGE full_name full_name VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT NULL COLLATE `utf8mb4_unicode_ci`');
     }
 }
